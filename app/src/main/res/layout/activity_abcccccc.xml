@@ -11,7 +11,7 @@
         android:id="@+id/textView"
         android:layout_width="275dp"
         android:layout_height="192dp"
-        android:text="Renish"
+        android:text="Renish Servaiya"
         android:textSize="40sp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
