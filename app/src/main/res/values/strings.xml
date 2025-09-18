@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TimeCrafted</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="continue_as_guest">Continue as Guest</string>
+    <string name="discover_a_curated_collection_of_exquisite_timepieces_crafted_for_every_moment">Discover a curated collection of exquisite timepieces, crafted for every moment.</string>
+    <string name="by_continuing_you_agree_to_our_terms_of_service_and_privacy_policy">By continuing, you agree to our Terms of Service and Privacy Policy.</string>
+    <string name="timeless_elegance">Timeless Elegance</string>
+</resources>
