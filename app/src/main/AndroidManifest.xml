@@ -13,6 +13,21 @@
         android:theme="@style/Theme.TimeCrafted"
         tools:targetApi="31">
         <activity
+            android:name=".ui.profile.editProfilePhoto"
+            android:exported="false" />
+        <activity
+            android:name=".ui.profile.orderHistory"
+            android:exported="false" />
+        <activity
+            android:name=".ui.profile.addressInformation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.profile.personalInformation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.profile.mainProfile"
+            android:exported="false" />
+        <activity
             android:name=".ui.main.storeScreen"
             android:exported="false" />
         <activity
