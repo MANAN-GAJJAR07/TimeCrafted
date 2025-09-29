@@ -13,36 +13,6 @@
         android:theme="@style/Theme.TimeCrafted"
         tools:targetApi="31">
         <activity
-            android:name=".ui.guest.guestHome"
-            android:exported="false" />
-        <activity
-            android:name=".ui.guest.guestStore"
-            android:exported="false" />
-        <activity
-            android:name=".ui.guest.guestProductDetails"
-            android:exported="false" />
-        <activity
-            android:name=".ui.guest.guestWishlist"
-            android:exported="false" />
-        <activity
-            android:name=".ui.guest.guestProfile"
-            android:exported="false" />
-        <activity
-            android:name=".ui.product.productDetails"
-            android:exported="false" />
-        <activity
-            android:name=".ui.profile.editAddress"
-            android:exported="false" />
-        <activity
-            android:name=".ui.profile.addAddress"
-            android:exported="false" />
-        <activity
-            android:name=".ui.profile.updatePassword"
-            android:exported="false" />
-        <activity
-            android:name=".ui.profile.uploadImgSuceessfully"
-            android:exported="false" />
-        <activity
             android:name=".ui.profile.editProfilePhoto"
             android:exported="false" />
         <activity
