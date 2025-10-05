@@ -5,8 +5,7 @@
     android:background="#FCF9F7"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="40dp">
+    android:layout_height="match_parent">
     <ScrollView
         android:id="@+id/rj4elcc6dmg"
         android:layout_width="match_parent"
