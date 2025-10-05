@@ -13,6 +13,33 @@
         android:theme="@style/Theme.TimeCrafted"
         tools:targetApi="31">
         <activity
+            android:name=".ui.main.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.main.ContactSupportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.product.SortActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.product.FilterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.product.OrderDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.product.OrderConfirmationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.product.CheckoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.product.CartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.product.ItemDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.profile.editProfilePhoto"
             android:exported="false" />
         <activity
@@ -25,12 +52,6 @@
             android:name=".ui.profile.personalInformation"
             android:exported="false" />
         <activity
-            android:name=".ui.profile.mainProfile"
-            android:exported="false" />
-        <activity
-            android:name=".ui.main.storeScreen"
-            android:exported="false" />
-        <activity
             android:name=".abcccccc"
             android:exported="false" />
         <activity
@@ -38,6 +59,9 @@
             android:exported="false" />
         <activity
             android:name=".ui.auth.setNewPassword"
+            android:exported="false" />
+        <activity
+            android:name=".ui.profile.updatePassword"
             android:exported="false" />
         <activity
             android:name=".ui.auth.verifyEmail"
@@ -49,7 +73,7 @@
             android:name=".ui.auth.loginScreen"
             android:exported="false" />
         <activity
-            android:name=".ui.auth.gotoScreen"
+            android:name=".ui.splashScreen.splashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -61,10 +85,7 @@
             android:name=".ui.auth.registerScreen"
             android:exported="false" />
         <activity
-            android:name=".ui.splashScreen.splashScreen"
-            android:exported="true" />
-        <activity
-            android:name=".ui.main.MainActivity"
+            android:name=".ui.auth.gotoScreen"
             android:exported="true" />
     </application>
 

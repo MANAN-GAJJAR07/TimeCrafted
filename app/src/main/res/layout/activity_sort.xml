@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#FFFFFF"
+    android:padding="16dp"
+    tools:context=".ui.product.SortActivity">
+
+    <!-- Title -->
+
+    <!-- Sorting Options -->
+
+    <TextView
+        android:id="@+id/tvSortTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:text="Sort"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/rgSortOptions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSortTitle">
+
+        <RadioButton
+            android:id="@+id/rbLowHigh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_boder"
+            android:padding="15dp"
+
+            android:text="\t\tPrice: Low to High"
+            android:layout_marginBottom="10dp"/>
+
+        <RadioButton
+            android:id="@+id/rbHighLow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_boder"
+            android:padding="15dp"
+            android:text="\t\tPrice: High to Low"
+            android:layout_marginBottom="10dp" />
+
+        <RadioButton
+            android:id="@+id/rbNewest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_boder"
+            android:padding="15dp"
+            android:text="\t\tNewest Arrivals"
+            android:layout_marginBottom="10dp"/>
+
+        <RadioButton
+            android:id="@+id/rbPopularity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_boder"
+            android:padding="15dp"
+            android:text="\t\tPopularity"
+            android:layout_marginBottom="10dp"/>
+
+        <RadioButton
+            android:id="@+id/rbRating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_boder"
+            android:padding="15dp"
+            android:text="\t\tCustomer Rating"/>
+    </RadioGroup>
+
+    <!-- Apply Sorting Button -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cr12bf2ba0c"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btnApplySorting"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/transparent"
+            android:text="Apply Sorting"
+            android:textColor="@color/textColor"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/tvSortTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_close" />
+</androidx.constraintlayout.widget.ConstraintLayout>

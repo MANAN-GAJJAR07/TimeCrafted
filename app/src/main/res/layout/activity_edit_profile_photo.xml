@@ -60,7 +60,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="1.0"
@@ -69,22 +69,37 @@
         app:layout_constraintVertical_bias="0.253"
         android:layout_marginHorizontal="30dp">
 
-        <Button
-            android:id="@+id/button2"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cancel"
-            android:background="@drawable/cr12bf2ba0c"/>
+            android:layout_height="48dp"
+            android:background="@drawable/cr12bf2f2e8">
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:background="@color/transparent"
+                android:textColor="@color/textColor"/>
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="170dp"
             android:layout_height="wrap_content"/>
 
-        <Button
-            android:id="@+id/button3"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Save" />
+            android:layout_height="48dp"
+            android:background="@drawable/cr12bf2ba0c">
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Save"
+                android:textColor="@color/textColor"
+                android:background="@color/transparent"/>
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

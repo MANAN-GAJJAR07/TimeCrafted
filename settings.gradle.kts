@@ -21,4 +21,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "TimeCrafted"
 include(":app")
- 
