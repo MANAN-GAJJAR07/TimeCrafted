@@ -7,15 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.timecrafted.R
 import com.example.timecrafted.databinding.FragmentShopBinding
 import com.example.timecrafted.ui.main.adapter.ProductAdapter
-import com.example.timecrafted.ui.main.adaptor.CategoriesAdapter
-import com.example.timecrafted.ui.main.data.Categories
 import com.example.timecrafted.ui.main.data.Product
 import com.example.timecrafted.ui.product.FilterActivity
 import com.example.timecrafted.ui.product.SortActivity
+import com.example.timecrafted.ui.product.productDetail
 
 class ShopFragment : Fragment() {
     private var _binding: FragmentShopBinding? = null
@@ -35,10 +33,8 @@ class ShopFragment : Fragment() {
         }
 
         setupRecyclerView()
-
         return binding.root
     }
-
 
     private fun setupRecyclerView() {
         val products = listOf(
@@ -51,12 +47,22 @@ class ShopFragment : Fragment() {
             Product("Women Watch", "₹3499", R.drawable.women_watch)
         )
 
-        val productAdapter = ProductAdapter(products)
+        val productAdapter = ProductAdapter(products) { product ->
+            openProductDetail(product)
+        }
+
         binding.productRecyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.productRecyclerView.adapter = productAdapter
-
     }
 
+    private fun openProductDetail(product: Product) {
+        val intent = Intent(requireContext(), productDetail::class.java).apply {
+            putExtra("name", product.name)
+            putExtra("price", product.price)
+            putExtra("imageRes", product.imageResId)
+        }
+        startActivity(intent)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

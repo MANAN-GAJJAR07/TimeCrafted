@@ -12,7 +12,6 @@ class gotoScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
         // 🧠 Step 1: Check login status from SharedPreferences
         val sharedPref = getSharedPreferences("LoginPref", MODE_PRIVATE)

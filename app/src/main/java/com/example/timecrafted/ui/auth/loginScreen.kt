@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -15,8 +17,6 @@ class loginScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-
         // 🧠 Step 1: Check if already logged in
         val sharedPref = getSharedPreferences("LoginPref", MODE_PRIVATE)
         val savedEmail = sharedPref.getString("email", null)
@@ -34,12 +34,40 @@ class loginScreen : AppCompatActivity() {
         setContentView(R.layout.activity_login_screen)
 
         val backLogin = findViewById<ImageView>(R.id.backLogin)
+        val googleLogin = findViewById<LinearLayout>(R.id.loginGoogle)
         val login = findViewById<Button>(R.id.btnLogin)
         val emailEdit = findViewById<EditText>(R.id.EmailEditText)
         val passwordEdit = findViewById<EditText>(R.id.PasswordEditText)
+        val registerPage = findViewById<TextView>(R.id.registerPage)
+        val forgotPasswordBtn = findViewById<TextView>(R.id.forgotPasswordBtn)
 
         backLogin.setOnClickListener {
-            startActivity(Intent(this, gotoScreen::class.java))
+            finish()
+        }
+
+        registerPage.setOnClickListener {
+            startActivity(Intent(this, registerScreen::class.java))
+        }
+
+        forgotPasswordBtn.setOnClickListener {
+            startActivity(Intent(this, forgotPassword::class.java))
+        }
+
+        // 🟢 Google Login → direct login simulation
+        googleLogin.setOnClickListener {
+            // Use a dummy Google user email
+            val googleEmail = "google_user@example.com"
+
+            // Save login state in SharedPreferences
+            val editor = sharedPref.edit()
+            editor.putString("email", googleEmail)
+            editor.apply()
+
+            // Navigate to MainActivity
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            intent.putExtra("email", googleEmail)
+            startActivity(intent)
             finish()
         }
 
@@ -60,7 +88,7 @@ class loginScreen : AppCompatActivity() {
                 editor.putString("email", email)
                 editor.apply()
 
-                // Navigate to main activity
+                // Navigate to MainActivity
                 val intent = Intent(this, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)

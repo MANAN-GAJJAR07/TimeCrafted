@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.timecrafted.databinding.ItemProductBinding
 import com.example.timecrafted.ui.main.data.Product
 
-class ProductAdapter(private val products: List<Product>) :
-    RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+class ProductAdapter(
+    private val products: List<Product>,
+    private val onItemClick: (Product) -> Unit
+) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     inner class ProductViewHolder(val binding: ItemProductBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -24,6 +26,11 @@ class ProductAdapter(private val products: List<Product>) :
             productName.text = product.name
             productPrice.text = product.price
             productImage.setImageResource(product.imageResId)
+
+            // ✅ Item click listener
+            root.setOnClickListener {
+                onItemClick(product)
+            }
         }
     }
 

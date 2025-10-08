@@ -1,5 +1,6 @@
 package com.example.timecrafted.ui.main.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import com.example.timecrafted.R
 import com.example.timecrafted.databinding.FragmentWishlistBinding
 import com.example.timecrafted.ui.main.adapter.ProductAdapter
 import com.example.timecrafted.ui.main.data.Product
+import com.example.timecrafted.ui.product.productDetail
 
 class WishlistFragment : Fragment() {
     private var _binding: FragmentWishlistBinding? = null
@@ -22,7 +24,6 @@ class WishlistFragment : Fragment() {
         _binding = FragmentWishlistBinding.inflate(inflater, container, false)
 
         setupRecyclerView()
-
         return binding.root
     }
 
@@ -34,10 +35,21 @@ class WishlistFragment : Fragment() {
             Product("Sport Watch", "₹1999", R.drawable.smartwatch)
         )
 
-        val wishlistAdapter = ProductAdapter(products)
+        val wishlistAdapter = ProductAdapter(products) { product ->
+            openProductDetail(product)
+        }
+
         binding.wishlistRecyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.wishlistRecyclerView.adapter = wishlistAdapter
+    }
 
+    private fun openProductDetail(product: Product) {
+        val intent = Intent(requireContext(), productDetail::class.java).apply {
+            putExtra("name", product.name)
+            putExtra("price", product.price)
+            putExtra("imageRes", product.imageResId)
+        }
+        startActivity(intent)
     }
 
     override fun onDestroyView() {

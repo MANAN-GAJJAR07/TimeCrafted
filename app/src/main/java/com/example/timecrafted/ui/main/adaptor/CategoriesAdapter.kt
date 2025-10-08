@@ -2,6 +2,7 @@ package com.example.timecrafted.ui.main.adaptor
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.timecrafted.databinding.ItemCategoriesBinding
 import com.example.timecrafted.ui.main.data.Categories
@@ -19,13 +20,21 @@ class CategoriesAdapter(private val categories: List<Categories>) :
     }
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-        val product = categories[position]
+        val category = categories[position]
         holder.binding.apply {
-            categoriesName.text = product.name
-            categoriesImage.setImageResource(product.imageResId)
+            categoriesName.text = category.name
+            categoriesImage.setImageResource(category.imageResId)
+
+            // ✅ Click listener for category
+            root.setOnClickListener {
+                Toast.makeText(
+                    holder.itemView.context,
+                    "Category: ${category.name}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 
     override fun getItemCount() = categories.size
-
 }

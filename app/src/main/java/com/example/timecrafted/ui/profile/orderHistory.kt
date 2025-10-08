@@ -14,7 +14,6 @@ import com.example.timecrafted.ui.product.OrderDetailsActivity
 class orderHistory : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_order_history)
 
         val backBtn = findViewById<ImageView>(R.id.backBtn)

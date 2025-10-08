@@ -87,7 +87,7 @@
                     android:paddingRight="32dp"
                     />
                 <TextView
-                    android:id="@+id/r3qznu12gd83"
+                    android:id="@+id/forgotPasswordBtn"
                     android:textColor="#998E4C"
                     android:textSize="14sp"
                     android:layout_marginVertical="4dp"
@@ -159,7 +159,7 @@
                         android:background="@color/transparent"/>
                 </LinearLayout>
                 <TextView
-                    android:id="@+id/rlff24hl591m"
+                    android:id="@+id/registerPage"
                     android:textColor="#998E4C"
                     android:textSize="14sp"
                     android:layout_marginVertical="4dp"

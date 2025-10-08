@@ -17,6 +17,7 @@ import com.example.timecrafted.ui.main.adaptor.CategoriesAdapter
 import com.example.timecrafted.ui.main.data.Categories
 import com.example.timecrafted.ui.main.data.Product
 import com.example.timecrafted.ui.product.CartActivity
+import com.example.timecrafted.ui.product.productDetail
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -35,11 +36,9 @@ class HomeFragment : Fragment() {
             val savedEmail = sharedPref.getString("email", null)
 
             if (savedEmail != null) {
-                val intent = Intent(requireContext(), CartActivity::class.java)
-                startActivity(intent)
+                startActivity(Intent(requireContext(), CartActivity::class.java))
             } else {
-                val intent = Intent(requireContext(), loginScreen::class.java)
-                startActivity(intent)
+                startActivity(Intent(requireContext(), loginScreen::class.java))
             }
         }
 
@@ -54,7 +53,10 @@ class HomeFragment : Fragment() {
             Product("Modern Design", "₹3499", R.drawable.product_img4)
         )
 
-        val newArrivalsAdapter = ProductAdapter(newArrivalsList)
+        val newArrivalsAdapter = ProductAdapter(newArrivalsList) { product ->
+            openProductDetail(product)
+        }
+
         binding.newArrivalsRecyclerView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.newArrivalsRecyclerView.adapter = newArrivalsAdapter
@@ -65,7 +67,11 @@ class HomeFragment : Fragment() {
             Product("Sport Watch", "₹199", R.drawable.product_img2),
             Product("Modern Design", "₹349", R.drawable.product_img)
         )
-        val bestsellersAdapter = ProductAdapter(bestsellers)
+
+        val bestsellersAdapter = ProductAdapter(bestsellers) { product ->
+            openProductDetail(product)
+        }
+
         binding.bestsellersRecyclerView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.bestsellersRecyclerView.adapter = bestsellersAdapter
@@ -75,9 +81,19 @@ class HomeFragment : Fragment() {
             Categories("Women's Watches", R.drawable.women_watch),
             Categories("Smart Watches", R.drawable.smartwatch)
         )
+
         val categoriesAdapter = CategoriesAdapter(categories)
         binding.categoriesRecyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.categoriesRecyclerView.adapter = categoriesAdapter
+    }
+
+    private fun openProductDetail(product: Product) {
+        val intent = Intent(requireContext(), productDetail::class.java).apply {
+            putExtra("name", product.name)
+            putExtra("price", product.price)
+            putExtra("imageRes", product.imageResId)
+        }
+        startActivity(intent)
     }
 
     override fun onDestroyView() {

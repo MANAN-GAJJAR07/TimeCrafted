@@ -26,6 +26,15 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         binding.bottomNavigation.setupWithNavController(navController)
 
+        val openFragment = intent.getStringExtra("openFragment")
+        if (openFragment == "wishlist") {
+            binding.bottomNavigation.selectedItemId = R.id.nav_wishlist
+        }
 
+//        // Check if an intent requests opening ProfileFragment
+//        val openFragment2 = intent.getStringExtra("openFragment")
+//        if (openFragment2 == "profile") {
+//            binding.bottomNavigation.selectedItemId = R.id.nav_profile
+//        }
     }
 }

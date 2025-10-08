@@ -1,17 +1,39 @@
 package com.example.timecrafted.ui.profile
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.timecrafted.R
+import com.example.timecrafted.databinding.ActivityUploadImgSuceessfullyBinding
+import com.example.timecrafted.ui.main.MainActivity
 
 class uploadImgSuceessfully : AppCompatActivity() {
+
+    private lateinit var binding: ActivityUploadImgSuceessfullyBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_upload_img_suceessfully)
+        binding = ActivityUploadImgSuceessfullyBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+        // Set selected image if available
+        val imageUriString = intent.getStringExtra("selectedImageUri")
+        imageUriString?.let {
+            val imageUri = Uri.parse(it)
+            binding.profileImage.findViewById<android.widget.ImageView>(0).setImageURI(imageUri)
+        }
+
+        // Back arrow → go back to previous activity
+        binding.backArrow.setOnClickListener {
+            finish()
+        }
+
+        // Save button → return to ProfileFragment
+        binding.saveBtn.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("openFragment", "profile")
+            startActivity(intent)
+            finish()
+        }
     }
 }

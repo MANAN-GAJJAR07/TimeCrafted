@@ -65,7 +65,7 @@
                             app:cardCornerRadius="70dp">
 
                             <ImageView
-                                android:id="@+id/rtp8we9bc3to"
+                                android:id="@+id/profileImage"
                                 android:layout_width="128dp"
                                 android:layout_height="128dp"
                                 android:scaleType="fitXY"

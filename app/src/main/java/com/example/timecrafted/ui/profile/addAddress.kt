@@ -2,6 +2,7 @@ package com.example.timecrafted.ui.profile
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
@@ -14,25 +15,39 @@ import com.example.timecrafted.R
 class addAddress : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_add_address)
 
-        val cancelBtn = findViewById<Button>(R.id.cancelBtn)
-        val saveAddressBtn = findViewById<Button>(R.id.saveAddressBtn)
-        val backBtn = findViewById<ImageView>(R.id.backBtn)
+        // Use meaningful variable names based on functionality
+        val cancelButton = findViewById<Button>(R.id.cancelBtn)
+        val saveAddressButton = findViewById<Button>(R.id.saveAddressBtn)
+        val backArrow = findViewById<ImageView>(R.id.backBtn)
 
-        cancelBtn.setOnClickListener {
-            startActivity(Intent(this, addressInformation::class.java))
+        cancelButton.setOnClickListener {
             finish()
         }
-        saveAddressBtn.setOnClickListener {
-            Toast.makeText(this, "Address Save successfully", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, addressInformation::class.java))
+        saveAddressButton.setOnClickListener {
+            Toast.makeText(this, "Address saved successfully", Toast.LENGTH_SHORT).show()
             finish()
         }
-        backBtn.setOnClickListener {
+        backArrow.setOnClickListener {
             finish()
         }
+    }
 
+    override fun onResume() {
+        super.onResume()
+        Log.d("AddAddress", "Activity resumed")
+        // Ensure activity stays active
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("AddAddress", "Activity paused")
+        // Don't finish here
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("AddAddress", "Activity destroyed")
     }
 }

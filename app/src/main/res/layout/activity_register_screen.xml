@@ -133,7 +133,7 @@
                             android:background="@color/transparent"/>
                     </LinearLayout>
                     <TextView
-                        android:id="@+id/ru13wmpt7i9c"
+                        android:id="@+id/loginPage"
                         android:textColor="#9B8749"
                         android:textSize="14sp"
                         android:layout_marginVertical="4dp"

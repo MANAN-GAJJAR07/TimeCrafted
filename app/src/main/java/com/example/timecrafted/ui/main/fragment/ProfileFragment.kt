@@ -1,10 +1,12 @@
 package com.example.timecrafted.ui.main.fragment
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.timecrafted.databinding.FragmentProfileBinding
@@ -20,67 +22,68 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
+    // ActivityResultLauncher for picking/editing profile photo
+    private val editPhotoLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == androidx.appcompat.app.AppCompatActivity.RESULT_OK) {
+            val imageUriString = result.data?.getStringExtra("selectedImageUri")
+            imageUriString?.let {
+                val imageUri = Uri.parse(it)
+                binding.profileImage.setImageURI(imageUri)
+            }
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 
+        // Sign out button
         binding.signOut.setOnClickListener {
-            // Show confirmation dialog
             val builder = AlertDialog.Builder(requireContext())
             builder.setTitle("Logout")
                 .setMessage("Are you sure you want to log out?")
                 .setCancelable(false)
-                .setNegativeButton("No") { dialog, _ ->
-                    dialog.dismiss()
-                }
+                .setNegativeButton("No") { dialog, _ -> dialog.dismiss() }
                 .setPositiveButton("Yes") { _, _ ->
-                    // Clear saved login data
-                    val sharedPref = requireActivity().getSharedPreferences("LoginPref", android.content.Context.MODE_PRIVATE)
+                    val sharedPref = requireActivity().getSharedPreferences(
+                        "LoginPref",
+                        android.content.Context.MODE_PRIVATE
+                    )
                     sharedPref.edit().clear().apply()
 
-                    // Redirect to Login Screen
                     val intent = Intent(requireContext(), loginScreen::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                 }
-
-            val alert = builder.create()
-            alert.show()
+            builder.create().show()
         }
 
+        // Open Edit Profile Photo Activity
         binding.changeProfilePictureBtn.setOnClickListener {
-            val i = Intent(requireContext(), editProfilePhoto::class.java)
-            startActivity(i)
+            val intent = Intent(requireContext(), editProfilePhoto::class.java)
+            editPhotoLauncher.launch(intent)
         }
 
+        // Open other profile screens
         binding.profileInfoBtn.setOnClickListener {
-            val i = Intent(requireContext(), personalInformation::class.java)
-            startActivity(i)
+            startActivity(Intent(requireContext(), personalInformation::class.java))
         }
+
         binding.addressBtn.setOnClickListener {
-            val i = Intent(requireContext(), addressInformation::class.java)
-            startActivity(i)
+            startActivity(Intent(requireContext(), addressInformation::class.java))
         }
+
         binding.orderHistoryBtn.setOnClickListener {
-            val i = Intent(requireContext(), orderHistory::class.java)
-            startActivity(i)
+            startActivity(Intent(requireContext(), orderHistory::class.java))
         }
-//        binding.paymentMethodBtn.setOnClickListener {
-//            val i = Intent(requireContext(), editProfilePhoto::class.java)
-//            startActivity(i)
-//        }
-//        binding.appSettingsBtn.setOnClickListener {
-//            val i = Intent(requireContext(), editProfilePhoto::class.java)
-//            startActivity(i)
-//        }
+
         binding.contactSupportBtn.setOnClickListener {
-            val i = Intent(requireContext(), ContactSupportActivity::class.java)
-            startActivity(i)
+            startActivity(Intent(requireContext(), ContactSupportActivity::class.java))
         }
-
-
 
         return binding.root
     }

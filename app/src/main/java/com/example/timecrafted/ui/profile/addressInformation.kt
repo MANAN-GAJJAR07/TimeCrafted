@@ -2,6 +2,7 @@ package com.example.timecrafted.ui.profile
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
@@ -13,21 +14,42 @@ import com.example.timecrafted.R
 class addressInformation : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_address_information)
 
-        val backBtn = findViewById<ImageView>(R.id.backBtn)
-        val editAddress = findViewById<LinearLayout>(R.id.editAddress)
-        val addAddress = findViewById<LinearLayout>(R.id.addAddress)
+        // Use meaningful IDs based on actual layout IDs
+        val backArrow = findViewById<ImageView>(R.id.backBtn)
+        val editAddressContainer = findViewById<LinearLayout>(R.id.editAddress)
+        val addAddressContainer = findViewById<LinearLayout>(R.id.addAddress)
 
-        backBtn.setOnClickListener {
+        backArrow.setOnClickListener {
             finish()
         }
-        editAddress.setOnClickListener {
-            startActivity(Intent(this, editAddress::class.java))
+        editAddressContainer.setOnClickListener {
+            val intent = Intent(this, editAddress::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
         }
-        addAddress.setOnClickListener {
-            startActivity(Intent(this, addAddress::class.java))
+        addAddressContainer.setOnClickListener {
+            val intent = Intent(this, addAddress::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("AddressInfo", "Activity resumed")
+        // Ensure activity stays active
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("AddressInfo", "Activity paused")
+        // Don't finish here
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("AddressInfo", "Activity destroyed")
     }
 }
