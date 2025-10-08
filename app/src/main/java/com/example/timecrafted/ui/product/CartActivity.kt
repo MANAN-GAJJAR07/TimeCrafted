@@ -1,6 +1,8 @@
 package com.example.timecrafted.ui.product
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.timecrafted.R
@@ -14,6 +16,14 @@ class CartActivity : AppCompatActivity() {
     private lateinit var adapter: CartItemAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        val checkoutBtn = findViewById<Button>(R.id.checkoutBtn)
+
+        checkoutBtn.setOnClickListener {
+            startActivity(Intent(this, CheckoutActivity::class.java))
+            finish()
+        }
+
 
         super.onCreate(savedInstanceState)
         binding = ActivityCartBinding.inflate(layoutInflater)

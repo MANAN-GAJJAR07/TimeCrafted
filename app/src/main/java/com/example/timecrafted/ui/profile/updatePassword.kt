@@ -3,6 +3,7 @@ package com.example.timecrafted.ui.profile
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,10 +16,10 @@ class updatePassword : AppCompatActivity() {
         setContentView(R.layout.activity_update_password)
 
         val updatePasswordBtn = findViewById<Button>(R.id.updatePasswordButton)
-        val backBtn = findViewById<Button>(R.id.backBtn)
+        val backBtn = findViewById<ImageView>(R.id.backBtn)
 
         updatePasswordBtn.setOnClickListener {
-            startActivity(Intent(this, personalInformation::class.java))
+            finish()
         }
         backBtn.setOnClickListener {
             finish()

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.timecrafted.R
+import com.example.timecrafted.ui.main.MainActivity
 import com.example.timecrafted.ui.main.fragment.ProfileFragment
 
 class personalInformation : AppCompatActivity() {
@@ -26,6 +27,7 @@ class personalInformation : AppCompatActivity() {
             val intent = Intent(this, updatePassword::class.java)
             startActivity(intent)
         }
+
 
 
     }

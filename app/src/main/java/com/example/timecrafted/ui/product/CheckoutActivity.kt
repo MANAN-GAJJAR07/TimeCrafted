@@ -1,6 +1,7 @@
 package com.example.timecrafted.ui.product
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
@@ -15,6 +16,8 @@ class CheckoutActivity : AppCompatActivity() {
         val btnPlaceOrder: Button = findViewById(R.id.btnPlaceOrder)
         btnPlaceOrder.setOnClickListener {
             Toast.makeText(this, "Order Placed Successfully!", Toast.LENGTH_LONG).show()
+            startActivity(Intent(this, OrderConfirmationActivity::class.java))
+            finish()
         }
     }
 }

@@ -49,6 +49,12 @@
             android:name=".ui.profile.addressInformation"
             android:exported="false" />
         <activity
+            android:name=".ui.profile.addAddress"
+            android:exported="false" />
+        <activity
+            android:name=".ui.profile.editAddress"
+            android:exported="false" />
+        <activity
             android:name=".ui.profile.personalInformation"
             android:exported="false" />
         <activity
