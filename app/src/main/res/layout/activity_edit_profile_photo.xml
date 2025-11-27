@@ -16,6 +16,7 @@
         android:layout_marginBottom="674dp"
         android:drawableStart="@drawable/back_arrow"
         android:gravity="center"
+        android:textColor="@color/textColor"
         android:text="Edit Profile Photo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

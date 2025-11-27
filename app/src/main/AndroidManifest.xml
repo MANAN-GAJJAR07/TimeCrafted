@@ -2,9 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
+        android:name=".TimeCraftedApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        tools:replace="android:fullBackupContent"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
@@ -23,6 +29,9 @@
             android:exported="false" />
         <activity
             android:name=".ui.product.SortActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.product.WriteReviewActivity"
             android:exported="false" />
         <activity
             android:name=".ui.product.FilterActivity"
@@ -96,6 +105,43 @@
         <activity
             android:name=".ui.auth.gotoScreen"
             android:exported="true" />
+        <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:exported="false" />
+        <!-- Admin Activities -->
+        <activity
+            android:name=".ui.admin.AdminLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.AdminDashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.AdminProductsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.AdminAddEditProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.AdminOrdersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.AdminUsersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.AdminCategoriesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.AdminAddEditCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.AdminOrderDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.AdminAddEditUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.AdminAddOrderActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

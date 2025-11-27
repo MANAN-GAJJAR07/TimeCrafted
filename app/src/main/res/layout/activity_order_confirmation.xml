@@ -85,43 +85,17 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="20dp"/>
 
-    <!-- Example Item -->
-    <ImageView
-        android:id="@+id/imgItem1"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@drawable/product_img"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerOrderItems"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:nestedScrollingEnabled="false"
         app:layout_constraintTop_toBottomOf="@id/tvSummaryTitle"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="12dp"/>
-
-    <TextView
-        android:id="@+id/tvItem1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Classic Chronograph Watch"
-        android:textSize="14sp"
-        android:textColor="@color/textColor"
-        app:layout_constraintStart_toEndOf="@id/imgItem1"
-        app:layout_constraintTop_toTopOf="@id/imgItem1"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="8dp"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Subtotal -->
-
-    <TextView
-        android:id="@+id/tvItemQnt1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:text="Quantity: 1"
-        android:textColor="@color/innerTextColor"
-        android:textSize="13sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@id/imgItem1"
-        app:layout_constraintTop_toTopOf="@id/tvItem1" />
 
     <TextView
         android:id="@+id/tvSubtotal"
@@ -130,7 +104,7 @@
         android:text="Subtotal"
         android:textSize="14sp"
         android:textColor="@color/innerTextColor"
-        app:layout_constraintTop_toBottomOf="@id/imgItem1"
+        app:layout_constraintTop_toBottomOf="@id/recyclerOrderItems"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp"/>
 
@@ -163,6 +137,29 @@
         android:textSize="14sp"
         android:textColor="#000"
         app:layout_constraintBaseline_toBaselineOf="@id/tvShippingCharge"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvPlatformFee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Platform Fee"
+        android:textSize="14sp"
+        android:textColor="@color/innerTextColor"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tvShippingCharge"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/tvPlatformFeeValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="₹10.00"
+        android:textSize="14sp"
+        android:textColor="#000"
+        android:visibility="gone"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvPlatformFee"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Total -->

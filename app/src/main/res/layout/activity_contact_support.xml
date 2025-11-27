@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/backgroundLight"
     android:padding="16dp">
 
     <!-- Title -->
@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Contact Support"
+        android:textColor="@color/textColor"
         android:textStyle="bold"
         android:textSize="18sp"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="How can we help?"
+        android:textColor="@color/textColor"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,6 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="88dp"
         android:background="@drawable/btn_boder"
+        android:textColorHint="@color/innerTextColor"
         android:hint="Search for help"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,7 +88,8 @@
                     android:text="FAQs"
                     android:padding="8dp"
                     android:textSize="16sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -119,6 +123,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Contact Us"
+                    android:textColor="@color/textColor"
                     android:padding="8dp"
                     android:textSize="16sp"
                     android:textStyle="bold"/>
@@ -154,6 +159,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Order Support"
+                    android:textColor="@color/textColor"
                     android:textSize="16sp"
                     android:textStyle="bold"/>
                 <TextView

@@ -4,11 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.timecrafted.R
 import com.example.timecrafted.databinding.ItemCategoriesBinding
 import com.example.timecrafted.ui.main.data.Categories
 
-class CategoriesAdapter(private val categories: List<Categories>) :
-    RecyclerView.Adapter<CategoriesAdapter.CategoryViewHolder>() {
+class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoryViewHolder>() {
+
+    private val categories = mutableListOf<Categories>()
 
     inner class CategoryViewHolder(val binding: ItemCategoriesBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -23,9 +26,12 @@ class CategoriesAdapter(private val categories: List<Categories>) :
         val category = categories[position]
         holder.binding.apply {
             categoriesName.text = category.name
-            categoriesImage.setImageResource(category.imageResId)
+            Glide.with(categoriesImage)
+                .load(category.imageUrl.ifBlank { null })
+                .placeholder(R.drawable.product_img)
+                .error(R.drawable.product_img)
+                .into(categoriesImage)
 
-            // ✅ Click listener for category
             root.setOnClickListener {
                 Toast.makeText(
                     holder.itemView.context,
@@ -37,4 +43,10 @@ class CategoriesAdapter(private val categories: List<Categories>) :
     }
 
     override fun getItemCount() = categories.size
+
+    fun submitList(items: List<Categories>) {
+        categories.clear()
+        categories.addAll(items)
+        notifyDataSetChanged()
+    }
 }

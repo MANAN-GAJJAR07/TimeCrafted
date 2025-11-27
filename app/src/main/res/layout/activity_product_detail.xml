@@ -666,6 +666,15 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <ProgressBar
+                android:id="@+id/relatedProgress"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="8dp"
+                android:visibility="gone" />
+
             <!-- Horizontal RecyclerView for related products -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvRelatedProducts"

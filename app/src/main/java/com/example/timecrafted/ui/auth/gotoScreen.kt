@@ -13,12 +13,9 @@ class gotoScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // 🧠 Step 1: Check login status from SharedPreferences
-        val sharedPref = getSharedPreferences("LoginPref", MODE_PRIVATE)
-        val savedEmail = sharedPref.getString("email", null)
-
-        // 🧩 Step 2: If already logged in, go directly to MainActivity
-        if (savedEmail != null) {
+        // Check if already logged in with Firebase Auth
+        val authRepository = com.example.timecrafted.data.auth.AuthRepository()
+        if (authRepository.isUserLoggedIn()) {
             val intent = Intent(this, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)

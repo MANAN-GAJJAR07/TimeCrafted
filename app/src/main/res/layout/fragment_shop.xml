@@ -121,4 +121,13 @@
         android:layout_marginTop="12dp"
         android:layout_marginStart="16dp"
         android:id="@+id/productRecyclerView"/>
+
+    <ProgressBar
+        android:id="@+id/shopProgress"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="16dp"
+        android:visibility="gone"/>
 </LinearLayout>

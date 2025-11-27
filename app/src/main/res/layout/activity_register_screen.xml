@@ -126,11 +126,11 @@
                             android:id="@+id/btnRegister"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:background="@color/transparent"
                             android:text="@string/register"
                             android:textColor="@color/textColor"
                             android:textSize="16sp"
-                            android:textStyle="bold"
-                            android:background="@color/transparent"/>
+                            android:textStyle="bold" />
                     </LinearLayout>
                     <TextView
                         android:id="@+id/loginPage"

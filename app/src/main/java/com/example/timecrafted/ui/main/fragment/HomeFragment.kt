@@ -6,22 +6,35 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.timecrafted.R
+import com.example.timecrafted.data.firebase.FirebaseKeys
+import com.example.timecrafted.data.firebase.FirebaseListener
+import com.example.timecrafted.data.firebase.FirebaseRepository
 import com.example.timecrafted.databinding.FragmentHomeBinding
 import com.example.timecrafted.ui.auth.loginScreen
-import com.example.timecrafted.ui.main.adapter.ProductAdapter
 import com.example.timecrafted.ui.main.adaptor.CategoriesAdapter
-import com.example.timecrafted.ui.main.data.Categories
+import com.example.timecrafted.ui.main.adapter.ProductAdapter
 import com.example.timecrafted.ui.main.data.Product
 import com.example.timecrafted.ui.product.CartActivity
 import com.example.timecrafted.ui.product.productDetail
+import com.google.android.material.snackbar.Snackbar
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
+    private val repository by lazy { FirebaseRepository() }
+    private val activeListeners = mutableListOf<FirebaseListener>()
+
+    private lateinit var newArrivalsAdapter: ProductAdapter
+    private lateinit var bestsellersAdapter: ProductAdapter
+    private lateinit var categoriesAdapter: CategoriesAdapter
+
+    private var productsLoaded = false
+    private var categoriesLoaded = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,75 +42,106 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        setupRecyclerView()
+        setupRecyclerViews()
+        observeCollections()
 
-        binding.cartBtn.setOnClickListener {
-            val sharedPref = requireActivity().getSharedPreferences("LoginPref", MODE_PRIVATE)
-            val savedEmail = sharedPref.getString("email", null)
-
-            if (savedEmail != null) {
-                startActivity(Intent(requireContext(), CartActivity::class.java))
-            } else {
-                startActivity(Intent(requireContext(), loginScreen::class.java))
-            }
-        }
+        binding.cartBtn.setOnClickListener { handleCartClick() }
 
         return binding.root
     }
 
-    private fun setupRecyclerView() {
-        val newArrivalsList = listOf(
-            Product("Classic Watch", "₹2999", R.drawable.product_img),
-            Product("Luxury Timepiece", "₹4999", R.drawable.product_img2),
-            Product("Sport Watch", "₹1999", R.drawable.product_img3),
-            Product("Modern Design", "₹3499", R.drawable.product_img4)
-        )
-
-        val newArrivalsAdapter = ProductAdapter(newArrivalsList) { product ->
-            openProductDetail(product)
+    private fun setupRecyclerViews() {
+        newArrivalsAdapter = ProductAdapter(::openProductDetail)
+        binding.newArrivalsRecyclerView.apply {
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = newArrivalsAdapter
         }
 
-        binding.newArrivalsRecyclerView.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.newArrivalsRecyclerView.adapter = newArrivalsAdapter
-
-        val bestsellers = listOf(
-            Product("Classic Watch", "₹299", R.drawable.product_img4),
-            Product("Luxury Timepiece", "₹499", R.drawable.product_img3),
-            Product("Sport Watch", "₹199", R.drawable.product_img2),
-            Product("Modern Design", "₹349", R.drawable.product_img)
-        )
-
-        val bestsellersAdapter = ProductAdapter(bestsellers) { product ->
-            openProductDetail(product)
+        bestsellersAdapter = ProductAdapter(::openProductDetail)
+        binding.bestsellersRecyclerView.apply {
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = bestsellersAdapter
         }
 
-        binding.bestsellersRecyclerView.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.bestsellersRecyclerView.adapter = bestsellersAdapter
+        categoriesAdapter = CategoriesAdapter()
+        binding.categoriesRecyclerView.apply {
+            layoutManager = GridLayoutManager(requireContext(), 2)
+            adapter = categoriesAdapter
+        }
+    }
 
-        val categories = listOf(
-            Categories("Men's Watches", R.drawable.men_watch),
-            Categories("Women's Watches", R.drawable.women_watch),
-            Categories("Smart Watches", R.drawable.smartwatch)
+    private fun observeCollections() {
+        activeListeners.forEach(repository::removeListener)
+        activeListeners.clear()
+        productsLoaded = false
+        categoriesLoaded = false
+        updateLoadingState()
+
+        activeListeners += repository.listenForProducts(
+            FirebaseKeys.Collections.SHOP,
+            onResult = { products ->
+                productsLoaded = true
+                val newArrivals = products
+                    .sortedByDescending { it.createdAt }
+                    .take(HOME_SECTION_LIMIT)
+                val bestsellers = products
+                    .sortedByDescending { it.salesCount }
+                    .take(HOME_SECTION_LIMIT)
+
+                newArrivalsAdapter.submitList(newArrivals)
+                bestsellersAdapter.submitList(bestsellers)
+                updateLoadingState()
+            },
+            onError = {
+                productsLoaded = true
+                updateLoadingState()
+                handleError(it)
+            }
         )
 
-        val categoriesAdapter = CategoriesAdapter(categories)
-        binding.categoriesRecyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
-        binding.categoriesRecyclerView.adapter = categoriesAdapter
+        activeListeners += repository.listenForCategories(
+            onResult = {
+                categoriesLoaded = true
+                categoriesAdapter.submitList(it)
+                updateLoadingState()
+            },
+            onError = {
+                categoriesLoaded = true
+                updateLoadingState()
+                handleError(it)
+            }
+        )
+    }
+
+    private fun handleCartClick() {
+        val authRepository = com.example.timecrafted.data.auth.AuthRepository()
+        val destination = if (authRepository.isUserLoggedIn()) CartActivity::class.java else loginScreen::class.java
+        startActivity(Intent(requireContext(), destination))
     }
 
     private fun openProductDetail(product: Product) {
-        val intent = Intent(requireContext(), productDetail::class.java).apply {
-            putExtra("name", product.name)
-            putExtra("price", product.price)
-            putExtra("imageRes", product.imageResId)
-        }
-        startActivity(intent)
+        startActivity(productDetail.createIntent(requireContext(), product))
+    }
+
+    private fun updateLoadingState() {
+        binding.homeProgress.isVisible = !(productsLoaded && categoriesLoaded)
+    }
+
+    private fun handleError(throwable: Throwable) {
+        Snackbar.make(binding.root, throwable.message ?: "Something went wrong", Snackbar.LENGTH_LONG)
+            .show()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        activeListeners.forEach(repository::removeListener)
+        activeListeners.clear()
         _binding = null
+    }
+
+    companion object {
+        private const val HOME_SECTION_LIMIT = 4
     }
 }

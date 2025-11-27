@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:text="$900"
             android:textSize="18sp"
-            android:textColor="#6b6b6b"
+            android:textColor="@color/textColor"
             android:layout_marginTop="8dp"/>
 
         <TextView
@@ -47,7 +47,7 @@
             android:text="This elegant timepiece combines luxury design with precision movement, perfect for any occasion."
             android:textSize="14sp"
             android:layout_marginTop="10dp"
-            android:textColor="#6b6b6b"/>
+            android:textColor="@color/textColor"/>
 
         <Button
             android:id="@+id/btnBuyNowDetail"

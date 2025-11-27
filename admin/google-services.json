@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "584668063340",
+    "project_id": "timecrafted-e67dd",
+    "storage_bucket": "timecrafted-e67dd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584668063340:android:102b89b2dc3c52d5af5a49",
+        "android_client_info": {
+          "package_name": "com.example.timecrafted.admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "584668063340-5kk4phba0hn18opmp879gf00uosajptp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzOb4cNJe-rO4Q8msSbRzAaHrJN1NjjA0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "584668063340-5kk4phba0hn18opmp879gf00uosajptp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

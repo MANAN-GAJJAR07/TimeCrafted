@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Dark Theme Colors -->
-    <color name="black">#FFFFFFFF</color> <!-- text should be white on dark bg -->
-    <color name="gray">#B0B0B0</color>
-    <color name="white">#FF000000</color> <!-- background color -->
-    <color name="textColor">#F0EDEB</color>
-    <color name="transparent">#00FFFFFF</color>
-    <color name="innerTextColor">#D4C37A</color>
-    <color name="background">#121212</color>
-    <color name="backgroundLight">#1E1E1E</color>
-    <color name="off_white">#1C1C1C</color>
-    <color name="golden_brown">#C7AC6D</color>
+    <!-- Dark theme styles can be added here if needed -->
+    <!-- Colors are defined in colors.xml -->
 </resources>

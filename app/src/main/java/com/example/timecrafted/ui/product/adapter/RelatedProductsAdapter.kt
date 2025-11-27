@@ -6,13 +6,15 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.timecrafted.R
-import com.example.timecrafted.ui.product.model.RelatedProduct
+import com.example.timecrafted.ui.main.data.Product
 
 class RelatedProductsAdapter(
-    private val productList: List<RelatedProduct>,
-    private val onItemClick: (RelatedProduct) -> Unit
+    private val onItemClick: (Product) -> Unit
 ) : RecyclerView.Adapter<RelatedProductsAdapter.ViewHolder>() {
+
+    private val productList = mutableListOf<Product>()
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgProduct: ImageView = itemView.findViewById(R.id.imgRelated)
@@ -28,9 +30,14 @@ class RelatedProductsAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val product = productList[position]
-        holder.imgProduct.setImageResource(product.imageRes)
+        Glide.with(holder.imgProduct)
+            .load(product.imageUrl.ifBlank { null })
+            .placeholder(R.drawable.product_img)
+            .error(R.drawable.product_img)
+            .into(holder.imgProduct)
+
         holder.tvName.text = product.name
-        holder.tvPrice.text = product.price
+        holder.tvPrice.text = product.formattedPrice
 
         holder.itemView.setOnClickListener {
             onItemClick(product)
@@ -38,4 +45,10 @@ class RelatedProductsAdapter(
     }
 
     override fun getItemCount(): Int = productList.size
+
+    fun submitList(items: List<Product>) {
+        productList.clear()
+        productList.addAll(items)
+        notifyDataSetChanged()
+    }
 }

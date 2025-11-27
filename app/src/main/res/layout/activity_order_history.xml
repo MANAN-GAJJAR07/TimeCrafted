@@ -60,83 +60,24 @@
                     </LinearLayout>
 
                 </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/orderDetailsBtn"
+                <!-- RecyclerView for orders -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvOrderHistory"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#FCF9F7"
-                    android:paddingVertical="12dp"
-                    android:paddingHorizontal="16dp"
-                    android:orientation="horizontal">
-                    <LinearLayout
-                        android:id="@+id/rwy71ft0g54"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginEnd="12dp"
-                        android:orientation="horizontal">
-                        <ImageView
-                            android:id="@+id/rny6v9krcngn"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_marginEnd="16dp"
-                            android:src="@drawable/img_order"
-                            android:scaleType="fitXY"
-                            />
-                        <LinearLayout
-                            android:id="@+id/rr87jp972ck"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-                            <TextView
-                                android:id="@+id/rityomydvhf"
-                                android:textColor="#1C190C"
-                                android:textSize="16sp"
-                                android:textStyle="bold"
-                                android:layout_marginBottom="1dp"
-                                android:layout_height="wrap_content"
-                                android:layout_width="wrap_content"
-                                android:text="Order #123456"
-                                />
-                            <TextView
-                                android:id="@+id/rubkshre15vp"
-                                android:textColor="#998E4C"
-                                android:textSize="14sp"
-                                android:layout_marginBottom="1dp"
-                                android:layout_height="wrap_content"
-                                android:layout_width="match_parent"
-                                android:layout_weight="1"
-                                android:text="Date: 2024-01-15 | Status: Shipped"
-                                />
-                            <TextView
-                                android:id="@+id/rael2kgmyc8"
-                                android:textColor="#998E4C"
-                                android:textSize="14sp"
-                                android:layout_marginBottom="1dp"
-                                android:layout_height="wrap_content"
-                                android:layout_width="wrap_content"
-                                android:text="Total: $250"
-                                />
-                        </LinearLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/rmfexpbndjyj"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
-                        android:paddingBottom="59dp"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:id="@+id/rhpciu2iknb"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_margin="2dp"
-                            android:src="@drawable/arrow_forward"
-                            android:scaleType="fitXY"
-                            />
-                    </LinearLayout>
-                </LinearLayout>
+                    android:padding="8dp"
+                    android:clipToPadding="false"/>
+
+                <!-- Empty state -->
+                <TextView
+                    android:id="@+id/emptyState"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="No orders yet"
+                    android:textAlignment="center"
+                    android:textColor="@color/innerTextColor"
+                    android:padding="32dp"
+                    android:visibility="gone"/>
 
             </LinearLayout>
         </LinearLayout>

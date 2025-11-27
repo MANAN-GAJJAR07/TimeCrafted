@@ -27,6 +27,26 @@
 
     </LinearLayout>
 
+    <ProgressBar
+        android:id="@+id/wishlistProgress"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="16dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/wishlistEmptyState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/wishlist_empty_message"
+        android:textAlignment="center"
+        android:textColor="@color/textColor"
+        android:visibility="gone"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

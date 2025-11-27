@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/backgroundLight"
     tools:context=".ui.product.CartActivity">
 
     <TextView
@@ -15,7 +15,7 @@
         android:text="Cart"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:textColor="@color/black"
+        android:textColor="@color/textColor"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:padding="16dp"/>
@@ -30,6 +30,30 @@
         app:layout_constraintBottom_toTopOf="@id/layoutSummary"
         android:paddingHorizontal="16dp"
         android:clipToPadding="false"/>
+
+    <ProgressBar
+        android:id="@+id/cartProgress"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintBottom_toTopOf="@id/layoutSummary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/emptyCartState"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/cart_empty_message"
+        android:textAlignment="center"
+        android:textColor="@color/textColor"
+        android:padding="16dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/rvCartItems"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Order Summary -->
     <LinearLayout
@@ -47,7 +71,7 @@
             android:layout_height="wrap_content"
             android:text="Order Summary"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="@color/textColor"
             android:textSize="16sp"/>
 
         <LinearLayout
@@ -61,21 +85,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Subtotal: $430"
-                android:textColor="@color/black"/>
+                android:textColor="@color/textColor"/>
 
             <TextView
                 android:id="@+id/tvShipping"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Shipping: Free"
-                android:textColor="@color/black"/>
+                android:textColor="@color/textColor"/>
 
             <TextView
                 android:id="@+id/tvTaxes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Taxes: $20"
-                android:textColor="@color/black"/>
+                android:textColor="@color/textColor"/>
 
             <TextView
                 android:id="@+id/tvTotal"
@@ -83,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:text="Total: $450"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/textColor"
                 android:paddingTop="4dp"/>
         </LinearLayout>
     </LinearLayout>
@@ -106,7 +130,7 @@
             android:layout_height="wrap_content"
             android:text="Checkout"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="@color/textColor"
             android:backgroundTint="@color/transparent"
             />
     </LinearLayout>

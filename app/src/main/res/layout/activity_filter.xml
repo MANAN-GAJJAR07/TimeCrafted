@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/backgroundLight"
     android:padding="16dp"
     tools:context=".ui.product.FilterActivity">
 
@@ -17,6 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
+        android:textColor="@color/textColor"
         android:text="Filter"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -43,77 +44,107 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:textColor="@color/textColor"
                 android:text="Brand"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <CheckBox
+                android:id="@+id/cbBrandRolex"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
                 android:text="Rolex" />
 
             <CheckBox
+                android:id="@+id/cbBrandOmega"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
                 android:text="Omega" />
 
             <CheckBox
+                android:id="@+id/cbBrandTagHeuer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
                 android:text="Tag Heuer" />
 
             <CheckBox
+                android:id="@+id/cbBrandSeiko"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
                 android:text="Seiko" />
 
             <CheckBox
+                android:id="@+id/cbBrandCitizen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
                 android:text="Citizen" />
 
             <!-- Price -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
                 android:layout_marginTop="16dp"
                 android:text="Price Range"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <SeekBar
+                android:id="@+id/priceSeekBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
                 android:progressTint="#FFD700" />
+
+            <TextView
+                android:id="@+id/tvPriceValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/textColor"
+                android:text="@string/filter_price_any" />
 
             <!-- Style -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
                 android:layout_marginTop="16dp"
                 android:text="Style"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <CheckBox
+                android:id="@+id/cbStyleDress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
                 android:text="Dress" />
 
             <CheckBox
+                android:id="@+id/cbStyleSport"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
                 android:text="Sport" />
 
             <CheckBox
+                android:id="@+id/cbStyleCasual"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
                 android:text="Casual" />
 
             <!-- Case Size -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
                 android:layout_marginTop="16dp"
                 android:text="Case Size"
                 android:textSize="16sp"
@@ -175,23 +206,31 @@
                 android:textStyle="bold" />
 
             <CheckBox
+                android:id="@+id/cbBandLeather"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
                 android:text="Leather" />
 
             <CheckBox
+                android:id="@+id/cbBandMetal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
                 android:text="Metal" />
 
             <CheckBox
+                android:id="@+id/cbBandRubber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
                 android:text="Rubber" />
 
             <CheckBox
+                android:id="@+id/cbBandFabric"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
                 android:text="Fabric" />
         </LinearLayout>
     </ScrollView>

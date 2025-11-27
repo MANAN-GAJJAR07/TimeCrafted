@@ -2,7 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#FFFFFF"
+    android:background="@color/backgroundLight"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#FFFFFF">
+        android:background="@color/backgroundLight">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -20,7 +20,7 @@
                 android:id="@+id/r8594cabo8q7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FCF9F7"
+                android:background="@color/backgroundLight"
                 android:orientation="vertical">
                 <LinearLayout
                     android:id="@+id/romq6fyhpx58"
@@ -32,7 +32,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:background="#FCF9F7"
+                        android:background="@color/backgroundLight"
                         android:padding="16dp"
                         android:orientation="horizontal">
                         <ImageView
@@ -46,7 +46,7 @@
                             />
                         <TextView
                             android:id="@+id/r87hplfse2vc"
-                            android:textColor="#1C190C"
+                            android:textColor="@color/textColor"
                             android:textSize="18sp"
                             android:textStyle="bold"
                             android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
                         android:orientation="vertical">
                         <TextView
                             android:id="@+id/ri4qb8cgbcq9"
-                            android:textColor="#1C190C"
+                            android:textColor="@color/textColor"
                             android:textSize="16sp"
                             android:textStyle="bold"
                             android:layout_marginBottom="8dp"
@@ -78,12 +78,48 @@
                             android:background="@drawable/cr12bf2f2e8"
                             android:orientation="vertical">
                             <EditText
+                                android:id="@+id/fullNameEdit"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:hint="Full Name"
+                                android:textColorHint="@color/innerTextColor"
                                 android:paddingStart="15dp"
                                 android:backgroundTint="@color/transparent"
                                 android:inputType="text"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/phoneNumberLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="12dp"
+                        android:paddingHorizontal="16dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/phoneNumberLabel"
+                            android:textColor="@color/textColor"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="8dp"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:text="Mobile Number"
+                            />
+                        <LinearLayout
+                            android:id="@+id/phoneNumberContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/cr12bf2f2e8"
+                            android:orientation="vertical">
+                            <EditText
+                                android:id="@+id/phoneNumberEdit"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:hint="Enter your mobile number"
+                                android:textColorHint="@color/innerTextColor"
+                                android:paddingStart="15dp"
+                                android:backgroundTint="@color/transparent"
+                                android:inputType="phone"/>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
@@ -95,7 +131,7 @@
                         android:orientation="vertical">
                         <TextView
                             android:id="@+id/rnbugyv7f2dt"
-                            android:textColor="#1C190C"
+                            android:textColor="@color/textColor"
                             android:textSize="16sp"
                             android:textStyle="bold"
                             android:layout_marginBottom="8dp"
@@ -110,10 +146,12 @@
                             android:background="@drawable/cr12bf2f2e8"
                             android:orientation="vertical">
                             <EditText
+                                android:id="@+id/addressLine1Edit"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:hint="Street Address"
                                 android:paddingStart="15dp"
+                                android:textColorHint="@color/innerTextColor"
                                 android:backgroundTint="@color/transparent"
                                 android:inputType="text"/>
                         </LinearLayout>
@@ -127,7 +165,7 @@
                         android:orientation="vertical">
                         <TextView
                             android:id="@+id/rl4kj84lzbd"
-                            android:textColor="#1C190C"
+                            android:textColor="@color/textColor"
                             android:textSize="16sp"
                             android:textStyle="bold"
                             android:layout_marginBottom="8dp"
@@ -142,9 +180,11 @@
                             android:background="@drawable/cr12bf2f2e8"
                             android:orientation="vertical">
                             <EditText
+                                android:id="@+id/addressLine2Edit"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:hint="Street Address"
+                                android:textColorHint="@color/innerTextColor"
                                 android:paddingStart="15dp"
                                 android:backgroundTint="@color/transparent"
                                 android:inputType="text"/>
@@ -159,7 +199,7 @@
                         android:orientation="vertical">
                         <TextView
                             android:id="@+id/rh7xmjalgo1h"
-                            android:textColor="#1C190C"
+                            android:textColor="@color/textColor"
                             android:textSize="16sp"
                             android:textStyle="bold"
                             android:layout_marginBottom="8dp"
@@ -173,13 +213,16 @@
                             android:layout_height="48dp"
                             android:background="@drawable/cr12bf2f2e8"
                             android:orientation="vertical">
+
                             <EditText
+                                android:id="@+id/cityEdit"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:backgroundTint="@color/transparent"
+                                android:textColorHint="@color/innerTextColor"
                                 android:hint="City"
-                                android:paddingStart="15dp"
-                                android:inputType="text"/>
+                                android:inputType="text"
+                                android:paddingStart="15dp" />
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
@@ -191,7 +234,7 @@
                         android:orientation="vertical">
                         <TextView
                             android:id="@+id/rdf1svw6wjy"
-                            android:textColor="#1C190C"
+                            android:textColor="@color/textColor"
                             android:textSize="16sp"
                             android:textStyle="bold"
                             android:layout_marginBottom="8dp"
@@ -207,9 +250,11 @@
                             android:orientation="vertical">
 
                             <EditText
+                                android:id="@+id/stateEdit"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:backgroundTint="@color/transparent"
+                                android:textColorHint="@color/innerTextColor"
                                 android:hint="State/Province"
                                 android:paddingStart="15dp"
                                 android:inputType="text" />
@@ -224,7 +269,7 @@
                         android:orientation="vertical">
                         <TextView
                             android:id="@+id/rrn26l2g17bq"
-                            android:textColor="#1C190C"
+                            android:textColor="@color/textColor"
                             android:textSize="16sp"
                             android:textStyle="bold"
                             android:layout_marginBottom="8dp"
@@ -239,9 +284,11 @@
                             android:background="@drawable/cr12bf2f2e8"
                             android:orientation="vertical">
                             <EditText
+                                android:id="@+id/zipCodeEdit"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:hint="Zip/Postal Code"
+                                android:textColorHint="@color/innerTextColor"
                                 android:paddingStart="15dp"
                                 android:backgroundTint="@color/transparent"
                                 android:inputType="numberDecimal"/>
@@ -256,7 +303,7 @@
                         android:orientation="vertical">
                         <TextView
                             android:id="@+id/r5k1iksypx7q"
-                            android:textColor="#1C190C"
+                            android:textColor="@color/textColor"
                             android:textSize="16sp"
                             android:textStyle="bold"
                             android:layout_marginBottom="8dp"
@@ -271,11 +318,13 @@
                             android:background="@drawable/cr12bf2f2e8"
                             android:orientation="vertical">
                             <EditText
+                                android:id="@+id/countryEdit"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:hint="Country"
                                 android:paddingStart="15dp"
                                 android:backgroundTint="@color/transparent"
+                                android:textColorHint="@color/innerTextColor"
                                 android:inputType="text"/>
                         </LinearLayout>
                     </LinearLayout>
@@ -284,7 +333,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:background="#FCF9F7"
+                        android:background="@color/backgroundLight"
                         android:paddingVertical="12dp"
                         android:paddingHorizontal="16dp"
                         android:orientation="horizontal">
@@ -294,8 +343,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:textColorHint="@color/textColor"
                             android:minHeight="48dp"
-                            android:text="Set as Default Address" />
+                            android:text="Set as Default Address"
+                            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
 
                     </LinearLayout>
@@ -326,7 +377,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Cancel"
                                 android:backgroundTint="@color/transparent"
-                                android:textColor="#1C190C"
+                                android:textColor="@color/textColor"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
@@ -390,7 +441,7 @@
                     android:id="@+id/rfv7uz7tvwnd"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:background="#FCF9F7"
+                    android:background="@color/backgroundLight"
                     android:orientation="vertical">
                 </LinearLayout>
             </LinearLayout>

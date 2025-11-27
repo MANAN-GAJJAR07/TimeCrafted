@@ -13,6 +13,14 @@ library = "8.13.0"
 runtimeSavedInstanceState = "1.0.0-alpha11"
 navigationFragmentKtx = "2.9.5"
 navigationUiKtx = "2.9.5"
+firebaseBom = "33.4.0"
+glide = "4.16.0"
+googleGms = "4.4.4"
+cloudinary = "2.1.0"
+playServicesAuth = "21.2.0"
+razorpay = "1.6.33"
+cardview = "1.0.0"
+gridlayout = "1.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -27,8 +35,19 @@ library = { group = "com.android.databinding", name = "library", version.ref = "
 androidx-runtime-saved-instance-state = { group = "androidx.compose.runtime", name = "runtime-saved-instance-state", version.ref = "runtimeSavedInstanceState" }
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-database = { group = "com.google.firebase", name = "firebase-database-ktx" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth-ktx" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics-ktx" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+cloudinary = { group = "com.cloudinary", name = "cloudinary-android", version.ref = "cloudinary" }
+play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
+razorpay = { group = "com.razorpay", name = "checkout", version.ref = "razorpay" }
+cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
+androidx-gridlayout = { group = "androidx.gridlayout", name = "gridlayout", version.ref = "gridlayout" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGms" }
 

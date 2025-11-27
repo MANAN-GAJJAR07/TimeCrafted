@@ -86,11 +86,12 @@
                         <LinearLayout
                             android:id="@+id/rfhw3abatob"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="48dp"
                             android:background="@drawable/cr12bf2f2e8"
                             android:orientation="vertical">
 
                             <EditText
+                                android:id="@+id/nameEdit"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@color/transparent"
@@ -120,17 +121,19 @@
                         <LinearLayout
                             android:id="@+id/ravqoyssw7q"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="48dp"
                             android:background="@drawable/cr12bf2f2e8"
                             android:orientation="vertical">
 
                             <EditText
+                                android:id="@+id/emailEdit"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@color/transparent"
                                 android:hint="Enter Email"
                                 android:inputType="textEmailAddress"
                                 android:paddingStart="10dp"
+                                android:enabled="false"
                                 tools:ignore="TouchTargetSizeCheck" />
                         </LinearLayout>
                     </LinearLayout>
@@ -154,16 +157,17 @@
                         <LinearLayout
                             android:id="@+id/rzvl2yc584e"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="48dp"
                             android:background="@drawable/cr12bf2f2e8"
                             android:orientation="vertical">
 
                             <EditText
+                                android:id="@+id/phoneNumberEdit"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@color/transparent"
                                 android:hint="Enter Phone Number"
-                                android:inputType="number"
+                                android:inputType="phone"
                                 android:paddingStart="10dp"
                                 tools:ignore="TouchTargetSizeCheck" />
                         </LinearLayout>

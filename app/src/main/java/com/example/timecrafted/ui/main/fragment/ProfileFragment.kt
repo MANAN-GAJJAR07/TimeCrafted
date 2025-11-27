@@ -9,6 +9,11 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.example.timecrafted.R
+import com.example.timecrafted.data.auth.AuthRepository
+import com.example.timecrafted.data.cloudinary.CloudinaryService
+import com.example.timecrafted.data.repository.UserRepository
 import com.example.timecrafted.databinding.FragmentProfileBinding
 import com.example.timecrafted.ui.auth.loginScreen
 import com.example.timecrafted.ui.main.ContactSupportActivity
@@ -21,17 +26,17 @@ class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
+    
+    private val authRepository by lazy { AuthRepository() }
+    private val userRepository by lazy { UserRepository() }
 
     // ActivityResultLauncher for picking/editing profile photo
     private val editPhotoLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
         if (result.resultCode == androidx.appcompat.app.AppCompatActivity.RESULT_OK) {
-            val imageUriString = result.data?.getStringExtra("selectedImageUri")
-            imageUriString?.let {
-                val imageUri = Uri.parse(it)
-                binding.profileImage.setImageURI(imageUri)
-            }
+            // Profile image updated, reload user data
+            loadUserProfile()
         }
     }
 
@@ -49,15 +54,12 @@ class ProfileFragment : Fragment() {
                 .setCancelable(false)
                 .setNegativeButton("No") { dialog, _ -> dialog.dismiss() }
                 .setPositiveButton("Yes") { _, _ ->
-                    val sharedPref = requireActivity().getSharedPreferences(
-                        "LoginPref",
-                        android.content.Context.MODE_PRIVATE
-                    )
-                    sharedPref.edit().clear().apply()
-
-                    val intent = Intent(requireContext(), loginScreen::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(intent)
+                    com.example.timecrafted.data.auth.AuthRepository().signOut {
+                        val intent = Intent(requireContext(), loginScreen::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+                        requireActivity().finish()
+                    }
                 }
             builder.create().show()
         }
@@ -85,7 +87,62 @@ class ProfileFragment : Fragment() {
             startActivity(Intent(requireContext(), ContactSupportActivity::class.java))
         }
 
+        // App Settings button
+        binding.appSettingsBtn.setOnClickListener {
+            startActivity(Intent(requireContext(), com.example.timecrafted.ui.settings.SettingsActivity::class.java))
+        }
+
+        // Load user profile data
+        loadUserProfile()
+
         return binding.root
+    }
+
+    private fun loadUserProfile() {
+        val userId = authRepository.getCurrentUserId()
+        if (userId == null) {
+            return
+        }
+
+        userRepository.getUserProfile(
+            userId = userId,
+            onSuccess = { profile ->
+                profile?.let {
+                    // Update name and email
+                    binding.rpyzi7sil7g.text = it.name.ifEmpty { "User" }
+                    binding.rkwt9mh0u0k.text = it.email.ifEmpty { authRepository.getCurrentUserEmail() ?: "" }
+
+                    // Load profile image from Cloudinary
+                    if (it.profileImagePath.isNotEmpty()) {
+                        val imageUrl = CloudinaryService.getImageUrl(it.profileImagePath)
+                        Glide.with(requireContext())
+                            .load(imageUrl)
+                            .placeholder(R.drawable.img_profile)
+                            .error(R.drawable.img_profile)
+                            .into(binding.profileImage)
+                    } else {
+                        // Use default image
+                        binding.profileImage.setImageResource(R.drawable.img_profile)
+                    }
+                } ?: run {
+                    // No profile found, use auth data
+                    val user = authRepository.getCurrentUser()
+                    binding.rpyzi7sil7g.text = user?.displayName ?: "User"
+                    binding.rkwt9mh0u0k.text = user?.email ?: ""
+                }
+            },
+            onError = {
+                // On error, use auth data
+                val user = authRepository.getCurrentUser()
+                binding.rpyzi7sil7g.text = user?.displayName ?: "User"
+                binding.rkwt9mh0u0k.text = user?.email ?: ""
+            }
+        )
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadUserProfile()
     }
 
     override fun onDestroyView() {
