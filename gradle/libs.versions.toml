@@ -21,6 +21,7 @@ playServicesAuth = "21.2.0"
 razorpay = "1.6.33"
 cardview = "1.0.0"
 gridlayout = "1.0.0"
+firebaseDatabase = "22.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -45,6 +46,7 @@ play-services-auth = { group = "com.google.android.gms", name = "play-services-a
 razorpay = { group = "com.razorpay", name = "checkout", version.ref = "razorpay" }
 cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
 androidx-gridlayout = { group = "androidx.gridlayout", name = "gridlayout", version.ref = "gridlayout" }
+google-firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

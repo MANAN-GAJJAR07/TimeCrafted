@@ -58,6 +58,7 @@ dependencies {
     implementation(libs.razorpay)
     implementation(libs.cardview)
     implementation(libs.androidx.gridlayout)
+    implementation(libs.google.firebase.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

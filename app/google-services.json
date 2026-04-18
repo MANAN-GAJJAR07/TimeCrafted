@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "584668063340",
-    "project_id": "timecrafted-e67dd",
-    "storage_bucket": "timecrafted-e67dd.firebasestorage.app"
+    "project_number": "695388283342",
+    "project_id": "timecrafted-ce48e",
+    "storage_bucket": "timecrafted-ce48e.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:584668063340:android:102b89b2dc3c52d5af5a49",
+        "mobilesdk_app_id": "1:695388283342:android:192c084e54c2fec5c14b9f",
         "android_client_info": {
           "package_name": "com.example.timecrafted"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "584668063340-5kk4phba0hn18opmp879gf00uosajptp.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCzOb4cNJe-rO4Q8msSbRzAaHrJN1NjjA0"
+          "current_key": "AIzaSyDO95btSfuOLgXr4sn_FWX909kJN44of9o"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "584668063340-5kk4phba0hn18opmp879gf00uosajptp.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
